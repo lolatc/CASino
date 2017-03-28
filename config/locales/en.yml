@@ -6,6 +6,7 @@ en:
     label_username: "Username"
     label_password: "Password"
     label_button: "Login"
+    label_wechat: "Login With Wechat"
     label_remember_me: "Stay logged in"
     notice: ""
   service_not_allowed:
