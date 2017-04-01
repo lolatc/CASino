@@ -11,6 +11,7 @@ module CASino::SessionsHelper
   def current_ticket_granting_ticket
     return nil unless cookies[:tgt]
     return @current_ticket_granting_ticket unless @current_ticket_granting_ticket.nil?
+
     find_valid_ticket_granting_ticket(cookies[:tgt], request.user_agent).tap do |tgt|
       cookies.delete :tgt if tgt.nil?
       @current_ticket_granting_ticket = tgt
@@ -40,6 +41,7 @@ module CASino::SessionsHelper
 
   def set_tgt_cookie(tgt)
     cookies[:tgt] = { value: tgt.ticket }.tap do |cookie|
+      #cookie[:expires] = 10.hour.from_now
       if tgt.long_term?
         cookie[:expires] = CASino.config.ticket_granting_ticket[:lifetime_long_term].seconds.from_now
       end

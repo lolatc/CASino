@@ -6,7 +6,7 @@ zh-CN:
     label_username: "用户名"
     label_password: "密码"
     label_button: "登录"
-    label_wechat: "微信扫码登录"
+    label_wechat: "微信扫码登录" 
     label_remember_me: "保持登录"
     notice: ""
   service_not_allowed:
@@ -26,6 +26,7 @@ zh-CN:
     title: "您好!"
     currently_logged_in_as: "您刚刚以<strong>%{username}</strong>登录。"
     label_logout_button: "登出"
+    label_bind_wechat: "绑定微信账号"       
     your_active_sessions: "当前会话"
     table:
       column_browser: "浏览器"

@@ -1,9 +1,10 @@
+require 'net/http'
 class CASino::SessionsController < CASino::ApplicationController
   include CASino::SessionsHelper
   include CASino::AuthenticationProcessor
   include CASino::TwoFactorAuthenticatorProcessor
 
-  before_action :validate_login_ticket, only: [:create]
+  before_action :validate_login_ticket, only: [:create, :login_with_wechat_account]
   before_action :ensure_service_allowed, only: [:new, :create]
   before_action :load_ticket_granting_ticket_from_parameter, only: [:validate_otp]
   before_action :ensure_signed_in, only: [:index, :destroy]
@@ -42,6 +43,12 @@ class CASino::SessionsController < CASino::ApplicationController
       .where('id != ?', current_ticket_granting_ticket.id)
       .destroy_all if signed_in?
     redirect_to params[:service] || sessions_path
+  end
+
+  def login_with_wechat_account
+    login_user=User.find(params[:userid])
+    validation_result = validate_login_credentials(login_user.username, login_user.original_password)
+    sign_in(validation_result, long_term: false, credentials_supplied: true)
   end
 
   def logout

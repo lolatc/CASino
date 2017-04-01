@@ -22,7 +22,8 @@ CASino::Engine.routes.draw do
   get 'authTokenLogin' => 'auth_tokens#login'
 
   root to: redirect('login')
-
+  get 'login_with_wechat_account' => 'sessions#login_with_wechat_account'
+ 
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

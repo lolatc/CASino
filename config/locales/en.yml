@@ -26,6 +26,7 @@ en:
     title: "Hello!"
     currently_logged_in_as: "You are currently logged in as <strong>%{username}</strong>."
     label_logout_button: "Logout"
+    label_bind_wechat: "Bind Wechat Account"    
     your_active_sessions: "Your Active Sessions"
     table:
       column_browser: "Browser"

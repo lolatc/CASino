@@ -7,7 +7,7 @@
         <%= raw t('sessions.currently_logged_in_as', :username => current_user.username) %>
       </p>
 
-      <%= link_to t('sessions.label_logout_button'), logout_path, :class => 'button' %>
+      <%= link_to t('sessions.label_logout_button'), logout_path, :class => 'button' %>&nbsp;&nbsp;<%= link_to t('sessions.label_bind_wechat'), ("#{CASino.config.frontend[:bind_wechat_account]}#{@current_ticket_granting_ticket.user.id}#wechat_redirect").html_safe, :class => 'button' %>
     </div>
 
     <div class="logo">

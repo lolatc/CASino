@@ -17,6 +17,7 @@ module CASino::AuthenticationProcessor
         break
       end
     end
+
     authentication_result
   end
 

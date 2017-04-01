@@ -22,7 +22,13 @@
         <%= label_tag :rememberMe do %>
           <%= check_box_tag :rememberMe, 1, params[:rememberMe] %> <%= t('login.label_remember_me') %>
         <% end %>
-        <%= button_tag t('login.label_button'), :class => 'button' %>&nbsp;&nbsp;<%= link_to "login.wechat", CASino.config.frontend[:login_with_wechat_qrconnect].html_safe%>
+
+        <% added_sevice = ""
+           if params[:service].present?
+             added_sevice = "?service=#{Rack::Utils.escape(params[:service])}"
+           end 
+          %>
+        <%= button_tag t('login.label_button'), :class => 'button' %>&nbsp;&nbsp;<%= link_to t("login.label_wechat"), ("#{CASino.config.frontend[:login_with_wechat_qrconnect]}#{added_sevice}#wechat_redirect").html_safe%>
       <% end %>
     </div>
   </div>
