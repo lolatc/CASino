@@ -15,6 +15,7 @@ module CASino
 
     private
     def apply_yaml_config(yaml)
+      put yaml
       cfg = (YAML.load(ERB.new(yaml).result)||{}).fetch(Rails.env, {})
       cfg.each do |k,v|
         value = if v.is_a? Hash
