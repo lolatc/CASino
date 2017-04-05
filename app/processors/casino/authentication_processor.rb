@@ -33,7 +33,9 @@ module CASino::AuthenticationProcessor
   end
 
   def authenticators
+    puts "wwwww"
     @authenticators ||= {}.tap do |authenticators|
+      puts "ddddd"
       CASino.config[:authenticators].each do |name, auth|
         puts name
         puts auth
