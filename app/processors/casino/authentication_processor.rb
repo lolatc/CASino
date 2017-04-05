@@ -9,6 +9,7 @@ module CASino::AuthenticationProcessor
       begin
         puts username
         puts password
+        puts "111111111"
         data = authenticator.validate(username, password)
       rescue CASino::Authenticator::AuthenticatorError => e
         Rails.logger.error "Authenticator '#{authenticator_name}' (#{authenticator.class}) raised an error: #{e}"

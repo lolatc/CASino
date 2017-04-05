@@ -24,6 +24,7 @@ class CASino::SessionsController < CASino::ApplicationController
   def create
     puts params[:username]
     puts params[:password]
+    puts "000000000"
     validation_result = validate_login_credentials(params[:username], params[:password])
     if !validation_result
       log_failed_login params[:username]
