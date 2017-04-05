@@ -35,6 +35,8 @@ module CASino::AuthenticationProcessor
   def authenticators
     @authenticators ||= {}.tap do |authenticators|
       CASino.config[:authenticators].each do |name, auth|
+        puts name
+        puts auth
         next unless auth.is_a?(Hash)
 
         authenticator = if auth[:class]
