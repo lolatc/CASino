@@ -14,8 +14,11 @@ module CASino
 
     private
     def apply_yaml_config(yaml)
+      puts Rails.env
       cfg = (YAML.load(ERB.new(yaml).result)||{}).fetch(Rails.env, {})
       cfg.each do |k,v|
+        puts k
+        puts v
         value = if v.is_a? Hash
           CASino.config.fetch(k.to_sym,{}).merge(v.symbolize_keys)
         else
