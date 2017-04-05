@@ -5,6 +5,7 @@ module CASino::AuthenticationProcessor
 
   def validate_login_credentials(username, password)
     authentication_result = nil
+    puts authenticators
     authenticators.each do |authenticator_name, authenticator|
       begin
         puts username
