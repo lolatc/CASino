@@ -11,6 +11,7 @@ module CASino
     initializer :yaml_configuration do |app|
       puts "hhhhh000000"
       apply_yaml_config load_file('config/cas.yml')
+      puts "ssssddddd"
     end
 
     private
