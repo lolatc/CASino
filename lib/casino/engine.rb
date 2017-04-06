@@ -9,15 +9,12 @@ module CASino
     rake_tasks { require 'casino/tasks' }
 
     initializer :yaml_configuration do |app|
-      puts "hhhhh000000"
       apply_yaml_config load_file('config/cas.yml')
-      puts "ssssddddd"
     end
 
     private
     def apply_yaml_config(yaml)
       cfg = (YAML.load(ERB.new(yaml).result)||{}).fetch(Rails.env, {})
-      puts cfg
       cfg.each do |k,v|
         value = if v.is_a? Hash
           CASino.config.fetch(k.to_sym,{}).merge(v.symbolize_keys)

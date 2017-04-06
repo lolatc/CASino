@@ -5,12 +5,8 @@ module CASino::AuthenticationProcessor
 
   def validate_login_credentials(username, password)
     authentication_result = nil
-    puts authenticators
     authenticators.each do |authenticator_name, authenticator|
       begin
-        puts username
-        puts password
-        puts "111111111"
         data = authenticator.validate(username, password)
       rescue CASino::Authenticator::AuthenticatorError => e
         Rails.logger.error "Authenticator '#{authenticator_name}' (#{authenticator.class}) raised an error: #{e}"
@@ -33,13 +29,9 @@ module CASino::AuthenticationProcessor
   end
 
   def authenticators
-    puts "wwwww"
     @authenticators ||= {}.tap do |authenticators|
-      puts "ddddd"
       puts CASino.config[:authenticators]
       CASino.config[:authenticators].each do |name, auth|
-        puts name
-        puts auth
         next unless auth.is_a?(Hash)
 
         authenticator = if auth[:class]

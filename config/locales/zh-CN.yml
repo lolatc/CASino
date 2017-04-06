@@ -51,6 +51,9 @@ zh-CN:
     invalid_two_factor_authenticator: "两步验证已经失效，请按照下面的指示："
     successfully_activated: "两步验证已经关联到此账户。"
     successfully_deleted: "两步验证已经删除。"
+  time:
+    formats:
+      default: "%Y年%b%d日 %A %H:%M:%S %Z"    
   datetime:
     ago: "%{datetime} 之前"
     distance_in_words:
